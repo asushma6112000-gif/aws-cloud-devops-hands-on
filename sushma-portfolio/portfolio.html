@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Sushma | Cloud & DevOps Engineer</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #080d18;
+        color: #f8fafc;
+        line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 18px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(8, 13, 24, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #1e293b;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: 700;
+        color: #38bdf8;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+
+    nav a {
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 8% 80px;
+
+        background:
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(56,189,248,0.15),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 20% 80%,
+                rgba(99,102,241,0.12),
+                transparent 30%
+            );
+    }
+
+    .hero-content {
+        max-width: 900px;
+    }
+
+    .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 30px;
+        border: 1px solid #1e7497;
+        color: #7dd3fc;
+        font-size: 13px;
+        margin-bottom: 25px;
+        background: rgba(56,189,248,0.06);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+    }
+
+    h1 {
+        font-size: clamp(45px, 7vw, 78px);
+        line-height: 1.05;
+        letter-spacing: -2px;
+        margin-bottom: 22px;
+    }
+
+    h1 span {
+        color: #38bdf8;
+    }
+
+    .hero-description {
+        max-width: 700px;
+        color: #94a3b8;
+        font-size: 19px;
+        margin-bottom: 32px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 13px 23px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .primary {
+        background: #38bdf8;
+        color: #06111c;
+    }
+
+    .primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(56,189,248,0.2);
+    }
+
+    .outline {
+        border: 1px solid #334155;
+        color: #e2e8f0;
+    }
+
+    .outline:hover {
+        border-color: #38bdf8;
+        color: #38bdf8;
+    }
+
+    /* SECTIONS */
+
+    section {
+        padding: 100px 8%;
+    }
+
+    .section-label {
+        color: #38bdf8;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-size: 38px;
+        margin-bottom: 12px;
+    }
+
+    .section-description {
+        color: #64748b;
+        max-width: 650px;
+        margin-bottom: 45px;
+    }
+
+    /* ABOUT */
+
+    .about-container {
+        max-width: 850px;
+    }
+
+    .about-container p {
+        color: #94a3b8;
+        font-size: 17px;
+        margin-bottom: 18px;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 16px;
+    }
+
+    .skill {
+        padding: 23px;
+        background: #0d1422;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .skill:hover {
+        transform: translateY(-5px);
+        border-color: #38bdf8;
+    }
+
+    .skill-icon {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .skill h3 {
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+    .skill p {
+        color: #64748b;
+        font-size: 13px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        gap: 22px;
+    }
+
+    .project {
+        position: relative;
+        padding: 30px;
+        background: #0d1422;
+        border: 1px solid #1e293b;
+        border-radius: 12px;
+        transition: 0.3s;
+    }
+
+    .project:hover {
+        transform: translateY(-6px);
+        border-color: #38bdf8;
+    }
+
+    .project-number {
+        color: #38bdf8;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .project h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .project p {
+        color: #94a3b8;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .tag {
+        padding: 5px 9px;
+        border-radius: 5px;
+        background: #111c2e;
+        border: 1px solid #26354d;
+        color: #7dd3fc;
+        font-size: 11px;
+    }
+
+    /* ARCHITECTURE */
+
+    .architecture-section {
+        background: #0b1220;
+        border-top: 1px solid #111c2d;
+        border-bottom: 1px solid #111c2d;
+    }
+
+    .architecture {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    .architecture-box {
+        min-width: 130px;
+        text-align: center;
+        padding: 17px 15px;
+        background: #0d1728;
+        border: 1px solid #26354d;
+        border-radius: 8px;
+    }
+
+    .architecture-box strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    .architecture-box small {
+        color: #64748b;
+        font-size: 10px;
+    }
+
+    .arrow {
+        color: #38bdf8;
+        font-size: 20px;
+    }
+
+    /* LEARNING */
+
+    .learning-box {
+        max-width: 900px;
+        padding: 30px;
+        border-left: 3px solid #38bdf8;
+        background: #0d1422;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .learning-box p {
+        color: #94a3b8;
+        margin-bottom: 18px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+        text-align: center;
+    }
+
+    .contact-card {
+        max-width: 750px;
+        margin: auto;
+        padding: 50px 30px;
+        background: linear-gradient(
+            145deg,
+            #0d1728,
+            #0a111e
+        );
+        border: 1px solid #1e293b;
+        border-radius: 14px;
+    }
+
+    .contact-card h2 {
+        font-size: 34px;
+        margin-bottom: 12px;
+    }
+
+    .contact-card p {
+        color: #64748b;
+        margin-bottom: 25px;
+    }
+
+    /* FOOTER */
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: #475569;
+        font-size: 13px;
+        border-top: 1px solid #1e293b;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+        nav {
+            padding: 16px 5%;
+        }
+
+        nav ul {
+            display: none;
+        }
+
+        section {
+            padding: 75px 5%;
+        }
+
+        .hero {
+            padding: 120px 5% 70px;
+        }
+
+        h1 {
+            letter-spacing: -1px;
+        }
+
+        .hero-description {
+            font-size: 16px;
+        }
+
+        .architecture {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="logo">SUSHMA.DEV</div>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="status">
+            <span class="dot"></span>
+            Open to Cloud & DevOps Opportunities
+        </div>
+
+        <h1>
+            Cloud &<br>
+            <span>DevOps Engineer</span>
+        </h1>
+
+        <p class="hero-description">
+            I build, automate and troubleshoot cloud infrastructure
+            using AWS, Terraform, Docker, CI/CD and Linux.
+            Passionate about scalable infrastructure and DevOps automation.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn primary">
+                View Projects
+            </a>
+
+            <a href="#contact" class="btn outline">
+                Connect With Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-label">01 — About</div>
+
+    <h2 class="section-title">Building with Cloud & Automation</h2>
+
+    <div class="about-container">
+
+        <p>
+            I am an aspiring Cloud & DevOps Engineer focused on
+            building practical skills in AWS cloud infrastructure,
+            Linux administration, Infrastructure as Code and CI/CD.
+        </p>
+
+        <p>
+            I learn by building hands-on environments and troubleshooting
+            issues rather than relying only on theoretical knowledge.
+        </p>
+
+        <p>
+            My goal is to help teams deploy applications reliably,
+            automate infrastructure and improve the overall software
+            delivery process.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="section-label">02 — Skills</div>
+
+    <h2 class="section-title">Technology Stack</h2>
+
+    <p class="section-description">
+        Technologies and tools I am learning and using through
+        hands-on cloud and DevOps projects.
+    </p>
+
+    <div class="skills-grid">
+
+        <div class="skill">
+            <div class="skill-icon">☁️</div>
+            <h3>AWS</h3>
+            <p>EC2 • VPC • IAM • ALB • ECS • ECR • RDS</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🏗️</div>
+            <h3>Terraform</h3>
+            <p>Infrastructure as Code and AWS provisioning</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🔄</div>
+            <h3>CI/CD</h3>
+            <p>Automated build and deployment pipelines</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🐳</div>
+            <h3>Docker</h3>
+            <p>Containerization and application deployment</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">☸️</div>
+            <h3>Kubernetes</h3>
+            <p>Container orchestration fundamentals</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🐧</div>
+            <h3>Linux</h3>
+            <p>Server administration and troubleshooting</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🌐</div>
+            <h3>NGINX</h3>
+            <p>Web server and reverse proxy configuration</p>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">📦</div>
+            <h3>Git</h3>
+            <p>Version control and project management</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="section-label">03 — Projects</div>
+
+    <h2 class="section-title">Featured Projects</h2>
+
+    <p class="section-description">
+        Hands-on projects built to understand real-world cloud
+        infrastructure and DevOps workflows.
+    </p>
+
+    <div class="projects">
+
+        <div class="project">
+
+            <div class="project-number">PROJECT 01</div>
+
+            <h3>AWS CI/CD Pipeline</h3>
+
+            <p>
+                Built a CI/CD pipeline for a Flask application using
+                AWS services. The workflow automates application
+                build, container image management and deployment.
+            </p>
+
+            <div class="tags">
+                <span class="tag">AWS</span>
+                <span class="tag">CodePipeline</span>
+                <span class="tag">CodeBuild</span>
+                <span class="tag">ECR</span>
+                <span class="tag">ECS</span>
+                <span class="tag">Docker</span>
+                <span class="tag">ALB</span>
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-number">PROJECT 02</div>
+
+            <h3>AWS Three-Tier Architecture</h3>
+
+            <p>
+                Designed a three-tier AWS architecture with public
+                and private subnets, load balancers, EC2 application
+                servers and an RDS database.
+            </p>
+
+            <div class="tags">
+                <span class="tag">VPC</span>
+                <span class="tag">EC2</span>
+                <span class="tag">ALB</span>
+                <span class="tag">ASG</span>
+                <span class="tag">RDS</span>
+                <span class="tag">NGINX</span>
+                <span class="tag">Flask</span>
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-number">PROJECT 03</div>
+
+            <h3>Three-Tier Infrastructure with Terraform</h3>
+
+            <p>
+                Automated the provisioning of a three-tier AWS
+                environment using Terraform, replacing manual
+                infrastructure configuration with Infrastructure as Code.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Terraform</span>
+                <span class="tag">AWS</span>
+                <span class="tag">VPC</span>
+                <span class="tag">EC2</span>
+                <span class="tag">ALB</span>
+                <span class="tag">ASG</span>
+                <span class="tag">RDS</span>
+                <span class="tag">SSM</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ARCHITECTURE -->
+
+<section class="architecture-section">
+
+    <div class="section-label">04 — Architecture</div>
+
+    <h2 class="section-title">AWS Web Server Flow</h2>
+
+    <p class="section-description">
+        A simple representation of the AWS environment practiced
+        during my hands-on learning.
+    </p>
+
+    <div class="architecture">
+
+        <div class="architecture-box">
+            🌐
+            <strong>Internet</strong>
+            <small>Client Request</small>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            ☁️
+            <strong>VPC</strong>
+            <small>Network</small>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            📡
+            <strong>Subnet</strong>
+            <small>Network Segment</small>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            💻
+            <strong>EC2</strong>
+            <small>Compute</small>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            🌐
+            <strong>NGINX</strong>
+            <small>Web Server</small>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="architecture-box">
+            🚀
+            <strong>Website</strong>
+            <small>HTML Application</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CURRENT LEARNING -->
+
+<section>
+
+    <div class="section-label">05 — Learning</div>
+
+    <h2 class="section-title">Currently Exploring</h2>
+
+    <div class="learning-box">
+
+        <p>
+            🔹 Advanced Terraform concepts including variables,
+            modules and reusable infrastructure.
+        </p>
+
+        <p>
+            🔹 Kubernetes and container orchestration.
+        </p>
+
+        <p>
+            🔹 GitHub Actions and modern CI/CD workflows.
+        </p>
+
+        <p>
+            🔹 GitOps and deployment automation.
+        </p>
+
+        <p>
+            🔹 Monitoring, security and cloud cost optimization.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+    <div class="contact-card">
+
+        <div class="section-label">06 — Contact</div>
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            Interested in Cloud, DevOps and automation?
+            Let's connect and learn together.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+
+            <a
+                href="https://github.com/"
+                target="_blank"
+                class="btn primary">
+                GitHub
+            </a>
+
+            <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                class="btn outline">
+                LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Sushma · Cloud & DevOps Engineer
+
+</footer>
+```
+
+</body>
+</html>
+
