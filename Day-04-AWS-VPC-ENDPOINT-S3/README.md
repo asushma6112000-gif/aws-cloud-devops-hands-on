@@ -329,7 +329,11 @@ This confirmed that the public EC2 had the required IAM permission and network a
 
 ## Step 9 — Connect from Public EC2 to Private EC2
 
-Because the private EC2 had no public IP, I connected to it through the public EC2.
+Because the Private EC2 did not have a public IP address, I could not connect to it directly from my computer.
+
+First, I connected from my computer to the **Public EC2** using SSH.
+
+Then, after entering the Public EC2, I connected from the **Public EC2 to the Private EC2** using the Private EC2's private IP address.
 
 Flow:
 
@@ -340,10 +344,20 @@ My Computer
      v
 Public EC2
      |
-     | SSH using private IP
+     | SSH using Private IP
      v
 Private EC2
 ```
+
+From the Public EC2, I used:
+
+```bash
+ssh -i key.pem ec2-user@<PRIVATE-EC2-PRIVATE-IP>
+```
+
+This worked because the Public EC2 and Private EC2 were inside the same VPC and could communicate using their private IP addresses.
+
+**Important:** The Public EC2 acted as the intermediate/bastion host for connecting to the Private EC2.
 
 ---
 
@@ -476,33 +490,33 @@ Successful S3 Access
 
 ## 1. Public and Private EC2
 
-`01-Public-Private-EC2.png`
-
 Shows the two EC2 instances used in the lab.
+
+![Public and Private EC2](./01-Public-Private-EC2.png)
 
 ## 2. S3 Bucket and Test Object
 
-`02-S3-Bucket-Day4-Test-Object.png`
-
 Shows the S3 bucket and `day4-test.txt`.
+
+![S3 Bucket and Test Object](./02-S3-Bucket-Day4-Test-Object.png)
 
 ## 3. Private Route Table and S3 Endpoint
 
-`03-Private-Route-Table-S3-Endpoint.png`
-
 Shows the private route table associated with the endpoint.
+
+![Private Route Table and S3 Endpoint](./03-Private-Route-Table-S3-Endpoint.png)
 
 ## 4. Public EC2 → Private EC2 → S3 Test
 
-`04-Public-EC2-to-Private-EC2-and-S3-Test.png`
-
 Shows the connection from the public EC2 to the private EC2 and the S3 access test.
+
+![Public EC2 to Private EC2 and S3 Test](./04-Public-EC2-to-Private-EC2-and-S3-Test.png)
 
 ## 5. S3 Gateway VPC Endpoint
 
-`05-S3-Gateway-VPC-Endpoint-Available.png`
-
 Shows the S3 Gateway VPC Endpoint in **Available** state.
+
+![S3 Gateway VPC Endpoint](./05-S3-Gateway-VPC-Endpoint-Available.png)
 
 ---
 
