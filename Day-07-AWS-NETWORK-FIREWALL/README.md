@@ -1,4 +1,4 @@
-# Day 7 – AWS Network Firewall Hands-on Lab
+i# Day 7 – AWS Network Firewall Hands-on Lab
 
 ## Project Overview
 
@@ -28,7 +28,6 @@ The main objective was to understand how traffic can be routed through **AWS Net
 AWS Network Firewall Architecture
 
 ### Architecture Components
-
 ```text
                          Internet
                             |
@@ -79,7 +78,6 @@ The main purpose of this lab was to understand how **AWS Network Firewall is ins
 The important concept is that the firewall does not automatically inspect all VPC traffic just because it was created. **Route tables must direct the traffic through the firewall endpoint.** AWS documentation describes the firewall endpoint as the component placed between the protected subnet and the external destination, such as an Internet Gateway.
 
 ### Simple Traffic Concept
-
 ```text
 Traffic
    |
@@ -105,7 +103,6 @@ Allow / Block
 ## 1. Internet Gateway
 
 The **Internet Gateway (IGW)** provides connectivity between the VPC and the internet.
-
 ```text
 Internet
    |
@@ -123,7 +120,6 @@ The Internet Gateway is attached to the VPC.
 ## 2. VPC and Subnets
 
 Inside the VPC, separate subnets were created for:
-
 ```text
 VPC
  |
@@ -143,7 +139,6 @@ AWS Network Firewall creates firewall endpoints in the firewall subnets selected
 ## 3. Firewall Subnet
 
 The Network Firewall was deployed in the dedicated firewall subnet.
-
 ```text
 Firewall Subnet
        |
@@ -167,7 +162,6 @@ Creating the firewall alone does not automatically place it in the traffic path.
 The VPC route tables must be configured so that the traffic that should be inspected is directed through the firewall endpoint.
 
 For the protected subnet, the route used in this lab was:
-
 ```text
 Destination:
 0.0.0.0/0
@@ -177,7 +171,6 @@ Gateway Load Balancer Endpoint
 ```
 
 Conceptually:
-
 ```text
 Protected Subnet
        |
@@ -198,7 +191,6 @@ The exact route configuration depends on whether the traffic being inspected is 
 ## 5. Firewall Policy
 
 The Network Firewall uses a **Firewall Policy** to define how traffic is inspected.
-
 ```text
 Firewall
    |
@@ -207,7 +199,6 @@ Firewall Policy
 ```
 
 The policy created in this lab used two stateful rule groups:
-
 ```text
 Firewall Policy
        |
@@ -225,7 +216,6 @@ standardport-rule-group   domain-group-list
 The stateful rule groups contain the traffic-matching rules.
 
 ### Standard Rule Group
-
 ```text
 standardport-rule-group
 
@@ -237,7 +227,6 @@ HTTP 80
 The TCP 3389 rule was used for Windows RDP connectivity.
 
 ### Domain Rule Group
-
 ```text
 domain-group-list
 
@@ -254,7 +243,6 @@ This was created to practice domain-based filtering.
 When traffic is routed through the firewall endpoint, AWS Network Firewall evaluates the traffic using the configured firewall policy and rule groups.
 
 Conceptually:
-
 ```text
 Traffic
    |
@@ -282,7 +270,6 @@ AWS Network Firewall uses its stateless and stateful inspection engines accordin
 ## 8. Protected Subnet
 
 The protected subnet contains the Windows Server EC2 instance.
-
 ```text
 Protected Subnet
        |
@@ -291,7 +278,6 @@ Windows Server EC2
 ```
 
 The protected subnet route table was configured to send internet-bound traffic toward the firewall endpoint.
-
 ```text
 0.0.0.0/0
      |
@@ -304,7 +290,6 @@ Gateway Load Balancer Endpoint
 ## 9. Windows Server EC2
 
 The Windows Server EC2 instance was used as the protected workload.
-
 ```text
 Protected Subnet
        |
@@ -320,7 +305,6 @@ RDP : 3389
 ## 10. RDP Access
 
 I connected to the Windows Server EC2 from my Mac using **Remote Desktop Protocol (RDP)**.
-
 ```text
 My Mac
    |
@@ -338,7 +322,6 @@ After checking the routing and firewall configuration, the RDP connection was su
 ## Overall Architecture Concept
 
 The main concept I practiced was:
-
 ```text
                  INTERNET
                     |
@@ -385,7 +368,6 @@ The key learning was:
 ## 1. Created the VPC
 
 Created a dedicated VPC for the Network Firewall lab.
-
 ```text
 VPC Name: Network-firewall-vpc
 CIDR: 10.1.0.0/16
@@ -399,7 +381,6 @@ The VPC was used as the main network boundary for the lab.
 ## 2. Created the Firewall Subnet
 
 Created a dedicated subnet for AWS Network Firewall.
-
 ```text
 Subnet Name: Firewall-subnet
 CIDR: 10.1.0.0/20
@@ -423,7 +404,6 @@ The purpose was to make the workload traffic pass through the Network Firewall.
 # 4. Created the Standard Stateful Rule Group
 
 Created:
-
 ```text
 standardport-rule-group
 ```
@@ -435,7 +415,6 @@ Configuration:
 - Capacity: 100
 
 The rule group contained rules for:
-
 ```text
 TCP 22
 TCP 3389
@@ -445,7 +424,6 @@ HTTP 80
 The RDP rule was used to allow Windows Remote Desktop traffic.
 
 During troubleshooting, the RDP source was temporarily changed to:
-
 ```text
 ANY
 ```
@@ -457,7 +435,6 @@ This helped remove the source-IP restriction while testing connectivity.
 # 5. Created the Domain List Rule Group
 
 Created:
-
 ```text
 domain-group-list
 ```
@@ -470,7 +447,6 @@ Configuration:
 - Action: Allow
 
 Allowed domains:
-
 ```text
 .amazon.com
 .flipkart.com
@@ -483,13 +459,11 @@ This rule group was created to practice **domain-based traffic filtering** with 
 # 6. Created the Firewall Policy
 
 Created:
-
 ```text
 Firewall-policy
 ```
 
 The policy used the two stateful rule groups:
-
 ```text
 Firewall-policy
        |
@@ -505,13 +479,11 @@ The policy was then associated with the Network Firewall.
 # 7. Created AWS Network Firewall
 
 Created:
-
 ```text
 Firewall-Network
 ```
 
 The firewall was deployed inside:
-
 ```text
 VPC:
 Network-firewall-vpc
@@ -531,14 +503,12 @@ A **Gateway Load Balancer Endpoint (GWLBe)** was created for the Network Firewal
 The endpoint was used as the route target for the protected traffic path.
 
 The endpoint was visible under:
-
 ```text
 VPC
 → Endpoints
 ```
 
 and showed the Network Firewall endpoint as a:
-
 ```text
 Gateway Load Balancer Endpoint
 ```
@@ -548,7 +518,6 @@ Gateway Load Balancer Endpoint
 # 9. Configured the Protected Subnet Route
 
 The protected subnet route table was configured so that internet-bound traffic was sent through the firewall endpoint.
-
 ```text
 Destination:
 0.0.0.0/0
@@ -558,7 +527,6 @@ Gateway Load Balancer Endpoint
 ```
 
 Traffic flow:
-
 ```text
 Protected Subnet
        |
@@ -586,7 +554,6 @@ Created a Windows Server EC2 instance inside the protected subnet.
 The instance was used as the test workload.
 
 RDP was configured using:
-
 ```text
 TCP 3389
 ```
@@ -606,25 +573,21 @@ I checked the network connectivity and firewall configuration.
 The RDP rule was initially restricted by source IP.
 
 To troubleshoot, I temporarily changed the RDP firewall rule source to:
-
 ```text
 ANY
 ```
 
 Destination:
-
 ```text
 10.1.0.0/16
 ```
 
 Port:
-
 ```text
 3389
 ```
 
 Action:
-
 ```text
 Pass
 ```
@@ -634,7 +597,6 @@ Pass
 ## Issue 2 – Tested TCP 3389 From Mac
 
 I checked the Windows EC2 RDP port from my Mac using:
-
 ```bash
 nc -vz 40.192.110.252 3389
 ```
@@ -656,7 +618,6 @@ This confirmed that the Windows workload could be reached through the configured
 ## Issue 4 – Firewall Could Not Be Deleted
 
 During cleanup, I initially tried to delete:
-
 ```text
 Firewall-Network
 ```
@@ -664,7 +625,6 @@ Firewall-Network
 AWS returned an error indicating that a related VPC endpoint was still referenced by a route table.
 
 The dependency was the protected subnet route:
-
 ```text
 0.0.0.0/0
 → Gateway Load Balancer Endpoint
@@ -673,7 +633,6 @@ The dependency was the protected subnet route:
 ### Fix
 
 I went to:
-
 ```text
 VPC
 → Route Tables
@@ -684,7 +643,6 @@ VPC
 and removed the route pointing to the Gateway Load Balancer Endpoint.
 
 After removing the route, I was able to delete:
-
 ```text
 Firewall-Network
 ```
@@ -698,7 +656,6 @@ This was an important troubleshooting step because Network Firewall resources mu
 Because AWS Network Firewall and related networking resources can generate charges, I cleaned up the lab resources after completing the practical.
 
 The cleanup process included:
-
 ```text
 Windows EC2
       ↓
@@ -731,6 +688,8 @@ Some resources may require dependent resources or routes to be removed first.
 
 Shows the AWS Network Firewall created for the lab.
 
+![Firewall Network Overview](screenshots/01-Firewall-Network-Overview%5C.png)
+
 ---
 
 ## 02 – Standard Rule Group
@@ -739,6 +698,8 @@ Shows the AWS Network Firewall created for the lab.
 
 Shows the stateful `standardport-rule-group` and its configured network rules.
 
+![Standard Rule Group](screenshots/02-Standardport-Rule-Group.png)
+
 ---
 
 ## 03 – Domain Rule Group
@@ -746,11 +707,12 @@ Shows the stateful `standardport-rule-group` and its configured network rules.
 **Domain Rule Group**
 
 Shows the `domain-group-list` with:
-
 ```text
 .amazon.com
 .flipkart.com
 ```
+
+![Domain Rule Group](screenshots/03-Domain-Rule-Group.png)
 
 ---
 
@@ -760,6 +722,8 @@ Shows the `domain-group-list` with:
 
 Shows the route configuration associated with the firewall subnet.
 
+![Firewall Subnet Route](screenshots/04-Firewall-Subnet-Route.png)
+
 ---
 
 ## 05 – Protected Subnet Route
@@ -767,6 +731,8 @@ Shows the route configuration associated with the firewall subnet.
 **Protected Subnet Route**
 
 Shows the protected subnet route sending traffic toward the Gateway Load Balancer Endpoint.
+
+![Protected Subnet Route](screenshots/05-Protected-Subnet-Route.png)
 
 ---
 
@@ -776,6 +742,8 @@ Shows the protected subnet route sending traffic toward the Gateway Load Balance
 
 Shows the initial RDP connectivity problem encountered during troubleshooting.
 
+![RDP Error](screenshots/06-RDP-Error.png)
+
 ---
 
 ## 07 – Firewall Network Endpoint
@@ -783,6 +751,8 @@ Shows the initial RDP connectivity problem encountered during troubleshooting.
 **Firewall Network Endpoint**
 
 Shows the Gateway Load Balancer Endpoint used in the Network Firewall traffic path.
+
+![Firewall Network Endpoint](screenshots/07-Firewall-Network-Endpoint.png)
 
 ---
 
@@ -792,6 +762,8 @@ Shows the Gateway Load Balancer Endpoint used in the Network Firewall traffic pa
 
 Shows the Windows Server EC2 instance used as the protected workload.
 
+![Windows Server EC2](screenshots/08-Windows-Server-EC2.png)
+
 ---
 
 ## 09 – Successful RDP Connection
@@ -799,6 +771,8 @@ Shows the Windows Server EC2 instance used as the protected workload.
 **Successful RDP Connection**
 
 Shows the successful RDP connection to the Windows Server EC2.
+
+![Successful RDP Connection](screenshots/09-Successful-RDP-Connection.png)
 
 ---
 
@@ -821,7 +795,6 @@ The lab provided hands-on practice with:
 - AWS resource cleanup
 
 The main traffic path practiced in this lab was:
-
 ```text
 Internet
    ↓
