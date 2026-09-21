@@ -883,5 +883,4 @@ Through this hands-on lab, I learned how to:
 - Windows Server
 - RDP
 - TCP/IP Networking
-- AWS Console
 
