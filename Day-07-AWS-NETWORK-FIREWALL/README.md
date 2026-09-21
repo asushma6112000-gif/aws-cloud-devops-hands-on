@@ -710,7 +710,7 @@ Some resources required dependent routes or resources to be removed first.
 
 Shows the AWS Network Firewall created for the lab.
 
-![Firewall Network Overview](screenshots/01-Firewall-Network-Overview%5C.png)
+![Firewall Network Overview](screenshots/01-Firewall-Network-Overview.png)
 
 ---
 
