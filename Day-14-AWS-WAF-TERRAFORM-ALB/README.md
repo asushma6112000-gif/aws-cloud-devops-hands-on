@@ -23,7 +23,7 @@ The project demonstrates how AWS WAF can protect a web application by blocking s
 
 ## Architecture Diagram
 
-![AWS WAF Terraform ALB Project Architecture](screenshots/architecture.png)
+![AWS WAF Project Architecture](architecture.png)
 
 ## Architecture Flow
 
