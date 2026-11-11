@@ -1,4 +1,4 @@
-# Day 19 – AWS Static Website Hosting with S3, CloudFront, Route 53 and ACM
+[200~# Day 19 – AWS Static Website Hosting with S3, CloudFront, Route 53 and ACM
 
 ## Project Overview
 
@@ -6,17 +6,15 @@ This project demonstrates how I hosted my personal portfolio website on AWS usin
 
 The objective of this hands-on lab was to understand how different AWS services work together to host, distribute and securely deliver a static website over the internet.
 
-**Project Type:** Individual Hands-on Lab\
-**Domain:** Cloud Computing – AWS\
+**Project Type:** Individual Hands-on Lab  
+**Domain:** Cloud Computing – AWS  
 **Focus:** Static Website Hosting, Content Delivery, DNS and HTTPS
 
 ## Architecture Diagram
 
 The following diagram represents the AWS architecture implemented in this project.
 
-\<!-- Add the AWS architecture diagram here -->
-
-
+![AWS Static Website Hosting Architecture](architecture.png)
 
 ## Architecture Flow
 
@@ -35,30 +33,31 @@ The request flow explains how a user accesses the portfolio website through the 
 
 ## AWS Services Used
 
-| AWS Service                   | Purpose                                                      |
-| ----------------------------- | ------------------------------------------------------------ |
-| Amazon S3                     | Stores static website files such as HTML, CSS and JavaScript |
-| Amazon CloudFront             | Distributes website content through AWS edge locations       |
-| Amazon Route 53               | Manages DNS records for the custom domain                    |
-| AWS Certificate Manager (ACM) | Manages the SSL/TLS certificate used for HTTPS               |
+| AWS Service | Purpose |
+|---|---|
+| Amazon S3 | Stores static website files such as HTML, CSS and JavaScript |
+| Amazon CloudFront | Distributes website content through AWS edge locations |
+| Amazon Route 53 | Manages DNS records for the custom domain |
+| AWS Certificate Manager (ACM) | Manages the SSL/TLS certificate used for HTTPS |
 
 ## Project Configuration
 
-| Component               | Configuration                  |
-| ----------------------- | ------------------------------ |
-| S3 Bucket               | `sushma-portfolio-s3-2026`     |
-| AWS Region              | `ap-south-1` (Mumbai)          |
-| CloudFront Distribution | `Sushma-Portfolio`             |
-| CloudFront Domain       | `d2sow377uszfv.cloudfront.net` |
-| Custom Domain           | `chethandevops.xyz`            |
-| WWW Domain              | `www.chethandevops.xyz`        |
-| Default Root Object     | `index.html`                   |
-| Website Files           | HTML, CSS and JavaScript       |
+| Component | Configuration |
+|---|---|
+| S3 Bucket | `sushma-portfolio-s3-2026` |
+| AWS Region | `ap-south-1` (Mumbai) |
+| CloudFront Distribution | `Sushma-Portfolio` |
+| CloudFront Domain | `d2sow377uszfv.cloudfront.net` |
+| Custom Domain | `chethandevops.xyz` |
+| WWW Domain | `www.chethandevops.xyz` |
+| Default Root Object | `index.html` |
+| Website Files | HTML, CSS and JavaScript |
 
 ## Website Files
 
 The portfolio website consists of the following files:
-```
+
+```text
 sushma-portfolio/
 ├── index.html
 ├── style.css
@@ -123,35 +122,35 @@ The following screenshots document the actual AWS configuration and final websit
 
 ### 01. S3 Bucket Created
 
-
+![S3 Bucket Created](screenshots/01-S3-Bucket-Created.png)
 
 ### 02. Website Files Uploaded
 
-
+![Website Files Uploaded](screenshots/02-Website-Files-Uploaded.png)
 
 ### 03. S3 Bucket Policy
 
-
+![S3 Bucket Policy](screenshots/03-S3-Bucket-Policy.png)
 
 ### 04. CloudFront Distribution Details
 
-
+![CloudFront Distribution Details](screenshots/04-CloudFront-Distribution-Details.png)
 
 ### 05. CloudFront Origin Configuration
 
-
+![CloudFront Origin Configuration](screenshots/05-CloudFront-Origin-Configuration.png)
 
 ### 06. ACM SSL Certificate Issued
 
-
+![ACM SSL Certificate Issued](screenshots/06-ACM-SSL-Certificate-Issued.png)
 
 ### 07. Route 53 Hosted Zone Records
 
-
+![Route 53 Hosted Zone Records](screenshots/07-Route53-Hosted-Zone-Records.png)
 
 ### 08. Portfolio Website Working
 
-
+![Portfolio Website Working](screenshots/08-Portfolio-Website-Working.png)
 
 ## Troubleshooting and Resolutions
 
@@ -216,7 +215,7 @@ The `www.chethandevops.xyz` subdomain was verified as accessible over HTTPS.
 
 ---
 
-**Author:** Sushma\
-**Role:** Aspiring Cloud & DevOps Engineer\
-**Project:** AWS Static Website Hosting – Day 19\
-**Repository:** [AWS Cloud & DevOps Hands-on](https://github.com/asushma6112000-gif/aws-cloud-devops-hands-on) seen this is readme.md add architecture link  and screenshot link
+**Author:** Sushma  
+**Role:** Aspiring Cloud & DevOps Engineer  
+**Project:** AWS Static Website Hosting – Day 19  
+**Repository:** [AWS Cloud & DevOps Hands-on](https://github.com/asushma6112000-gif/aws-cloud-devops-hands-on)
