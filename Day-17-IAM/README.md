@@ -42,7 +42,8 @@ The architecture diagram represents the IAM user, customer-managed policy, EC2 a
 
 **Architecture Image:**
 
-<!-- INSERT YOUR AWS IAM ARCHITECTURE IMAGE DIRECTLY HERE -->
+![AWS IAM Architecture](architecture.png)*
+
 
 ## 5. Architecture Workflow Explanation
 
