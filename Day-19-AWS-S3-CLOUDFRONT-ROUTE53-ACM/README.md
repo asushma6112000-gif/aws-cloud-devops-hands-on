@@ -1,4 +1,4 @@
-[200~# Day 19 – AWS Static Website Hosting with S3, CloudFront, Route 53 and ACM
+# Day 19 – AWS Static Website Hosting and Secure Content Delivery Using S3, CloudFront, Route 53 & ACM
 
 ## Project Overview
 
